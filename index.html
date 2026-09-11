@@ -33,7 +33,7 @@
         .corner-decor {
             position: fixed;
             z-index: 0;
-            pointer-events: none; 
+            pointer-events: none; /* Prevents them from blocking clicks */
             opacity: 0.8;
             border-radius: 50%;
             filter: blur(40px);
@@ -65,15 +65,63 @@
             opacity: 0.6;
         }
 
-        .icon-1 { top: 15%; left: 8%; width: 45px; height: 45px; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmY4Yjk0IiBkPSJNMTIgM3YxMC41NWMtLjU5LS4zNC0xLjI3LS41NS0yLS41NWMtMi4yMSAwLTQgMS43OS00IDRzMS43OSA0IDQgNCA0LTEuNzkgNC00VjdKdjNsMiAydjhoM3YtMThoLTN6Ii8+PC9zdmc+'); animation: floatSlowA 6s ease-in-out infinite alternate; }
-        .icon-2 { top: 25%; right: 10%; width: 35px; height: 35px; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZjhiMTk1IiBkPSJNMTIgMmwyLjQgNy4yaDcuNmwtNi4yIDQuOCAyLjQgNy4yLTUuOC00LjgtNS44IDQuOCAyLjQtNy4yLTYuMi00LjhoNy42eiIvPjwvc3ZnPg=='); animation: floatSlowB 8s ease-in-out infinite alternate; }
-        .icon-3 { bottom: 20%; left: 5%; width: 50px; height: 50px; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZjhiMTk1IiBkPSJNMTIgM3YxMC41NWMtLjU5LS4zNC0xLjI3LS41NS0yLS41NWMtMi4yMSAwLTQgMS43OS00IDRzMS43OSA0IDQgNCA0LTEuNzkgNC00VjdKdjNsMiAydjhoM3YtMThoLTN6Ii8+PC9zdmc+'); animation: floatSlowA 7s ease-in-out infinite alternate-reverse; }
-        .icon-4 { top: 60%; right: 5%; width: 40px; height: 40px; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmY4Yjk0IiBkPSJNMTIgMmwyLjQgNy4yaDcuNmwtNi4yIDQuOCAyLjQgNy4yLTUuOC00LjgtNS44IDQuOCAyLjQtNy4yLTYuMi00LjhoNy42eiIvPjwvc3ZnPg=='); animation: floatSlowB 9s ease-in-out infinite alternate-reverse; }
-        .icon-5 { top: 8%; right: 25%; width: 30px; height: 30px; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmY4Yjk0IiBkPSJNMTIgM3YxMC41NWMtLjU5LS4zNC0xLjI3LS41NS0yLS41NWMtMi4yMSAwLTQgMS43OS00IDRzMS43OSA0IDQgNCA0LTEuNzkgNC00VjdKdjNsMiAydjhoM3YtMThoLTN6Ii8+PC9zdmc+'); animation: floatSlowA 5s ease-in-out infinite alternate; }
-        .icon-6 { bottom: 12%; right: 20%; width: 45px; height: 45px; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZjhiMTk1IiBkPSJNMTIgMmwyLjQgNy4yaDcuNmwtNi4yIDQuOCAyLjQgNy4yLTUuOC00LjgtNS44IDQuOCAyLjQtNy4yLTYuMi00LjhoNy42eiIvPjwvc3ZnPg=='); animation: floatSlowB 7.5s ease-in-out infinite alternate; }
+        /* Note Pink */
+        .icon-1 {
+            top: 15%; left: 8%;
+            width: 45px; height: 45px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmY4Yjk0IiBkPSJNMTIgM3YxMC41NWMtLjU5LS4zNC0xLjI3LS41NS0yLS41NWMtMi4yMSAwLTQgMS43OS00IDRzMS43OSA0IDQgNCA0LTEuNzkgNC00VjdKdjNsMiAydjhoM3YtMThoLTN6Ii8+PC9zdmc+');
+            animation: floatSlowA 6s ease-in-out infinite alternate;
+        }
+        
+        /* Star Orange */
+        .icon-2 {
+            top: 25%; right: 10%;
+            width: 35px; height: 35px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZjhiMTk1IiBkPSJNMTIgMmwyLjQgNy4yaDcuNmwtNi4yIDQuOCAyLjQgNy4yLTUuOC00LjgtNS44IDQuOCAyLjQtNy4yLTYuMi00LjhoNy42eiIvPjwvc3ZnPg==');
+            animation: floatSlowB 8s ease-in-out infinite alternate;
+        }
 
-        @keyframes floatSlowA { 0% { transform: translateY(0) rotate(-10deg); } 100% { transform: translateY(-25px) rotate(10deg); } }
-        @keyframes floatSlowB { 0% { transform: translateY(0) rotate(15deg); } 100% { transform: translateY(30px) rotate(-15deg); } }
+        /* Note Orange */
+        .icon-3 {
+            bottom: 20%; left: 5%;
+            width: 50px; height: 50px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZjhiMTk1IiBkPSJNMTIgM3YxMC41NWMtLjU5LS4zNC0xLjI3LS41NS0yLS41NWMtMi4yMSAwLTQgMS43OS00IDRzMS43OSA0IDQgNCA0LTEuNzkgNC00VjdKdjNsMiAydjhoM3YtMThoLTN6Ii8+PC9zdmc+');
+            animation: floatSlowA 7s ease-in-out infinite alternate-reverse;
+        }
+
+        /* Star Pink */
+        .icon-4 {
+            top: 60%; right: 5%;
+            width: 40px; height: 40px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmY4Yjk0IiBkPSJNMTIgMmwyLjQgNy4yaDcuNmwtNi4yIDQuOCAyLjQgNy4yLTUuOC00LjgtNS44IDQuOCAyLjQtNy4yLTYuMi00LjhoNy42eiIvPjwvc3ZnPg==');
+            animation: floatSlowB 9s ease-in-out infinite alternate-reverse;
+        }
+
+        /* Note Pink (Top Right) */
+        .icon-5 {
+            top: 8%; right: 25%;
+            width: 30px; height: 30px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmY4Yjk0IiBkPSJNMTIgM3YxMC41NWMtLjU5LS4zNC0xLjI3LS41NS0yLS41NWMtMi4yMSAwLTQgMS43OS00IDRzMS43OSA0IDQgNCA0LTEuNzkgNC00VjdKdjNsMiAydjhoM3YtMThoLTN6Ii8+PC9zdmc+');
+            animation: floatSlowA 5s ease-in-out infinite alternate;
+        }
+
+        /* Star Orange (Bottom Right) */
+        .icon-6 {
+            bottom: 12%; right: 20%;
+            width: 45px; height: 45px;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZjhiMTk1IiBkPSJNMTIgMmwyLjQgNy4yaDcuNmwtNi4yIDQuOCAyLjQgNy4yLTUuOC00LjgtNS44IDQuOCAyLjQtNy4yLTYuMi00LjhoNy42eiIvPjwvc3ZnPg==');
+            animation: floatSlowB 7.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatSlowA {
+            0% { transform: translateY(0) rotate(-10deg); }
+            100% { transform: translateY(-25px) rotate(10deg); }
+        }
+
+        @keyframes floatSlowB {
+            0% { transform: translateY(0) rotate(15deg); }
+            100% { transform: translateY(30px) rotate(-15deg); }
+        }
 
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
@@ -264,6 +312,31 @@
             background-color: #fff;
         }
 
+        /* --- Highlighted Centered Note Box --- */
+        .highlight-note {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 2px dashed var(--accent-secondary);
+            padding: 15px 25px;
+            margin-top: 30px;
+            border-radius: 16px;
+            font-style: italic;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            text-align: center;
+            line-height: 1.6;
+            box-shadow: 0 5px 20px rgba(248, 177, 149, 0.15);
+            width: 100%;
+            max-width: 480px;
+            box-sizing: border-box;
+            backdrop-filter: blur(5px);
+        }
+
+        .highlight-note span {
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
         /* --- UPDATED DINNER SECTION (Frosted Glass over Blurred Photo) --- */
         .mystery-dinner {
             width: 100%;
@@ -328,6 +401,7 @@
             color: var(--accent);
             margin-top: 30px;
             animation: fadeIn 1s forwards;
+            font-style: italic;
         }
 
         /* --- Mobile Accessibility Fixes --- */
@@ -404,6 +478,11 @@
             <div class="map-container">
                 <!-- Red pinpoint exact embed -->
                 <iframe src="https://maps.google.com/maps?q=Grha+Budaya+Embung+Giwangan,+Yogyakarta&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+            <!-- Highlighted, Centered Dress Code Note -->
+            <div class="highlight-note">
+                No need to worry about a dress code, wear anything that makes you comfy. Your presence matters the most. Besides, you'll be shining in every outfit✨
             </div>
         </div>
 
@@ -504,15 +583,25 @@
             successMsg.style.display = 'block';
             event.target.closest('.content-section').appendChild(successMsg);
 
+            // 1. Silent Email via Web3Forms
             const formData = new FormData();
             formData.append('access_key', WEB3FORMS_ACCESS_KEY);
             formData.append('subject', 'She said YES to the Adventure!');
             formData.append('message', "Fita clicked 'Let's go!' for the nature getaway to Kali Talang.");
-
             fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 body: formData
-            }).then(response => console.log("Accept email sent.")).catch(error => console.error("Error", error));
+            }).catch(error => console.error("Error", error));
+
+            // 2. Automated WhatsApp Redirect
+            // Use country code (62 for Indonesia), no +, no spaces
+            const phoneNumber = "6285800049448"; 
+            const message = "Yay! I'd love to go to Kali Talang with you! ✨ Let's go!";
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 1000);
         }
 
         function declineAdventure(event) {
@@ -522,15 +611,24 @@
             declineMsg.style.display = 'block';
             event.target.closest('.content-section').appendChild(declineMsg);
 
+            // 1. Silent Email via Web3Forms
             const formData = new FormData();
             formData.append('access_key', WEB3FORMS_ACCESS_KEY);
             formData.append('subject', 'Adventure Update');
             formData.append('message', "Fita chose 'Maybe next time' for the morning trip. Lazy morning it is!");
-
             fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 body: formData
-            }).then(response => console.log("Decline email sent.")).catch(error => console.error("Error", error));
+            }).catch(error => console.error("Error", error));
+
+            // 2. Automated WhatsApp Redirect
+            const phoneNumber = "6285800049448"; 
+            const message = "I think I'll pass on the morning trip this time, let's just enjoy a lazy morning! 🤍";
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 1000);
         }
 
         function hideAllButtons() {
