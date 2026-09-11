@@ -513,7 +513,7 @@
                 How wonderful! I'll be counting the moments until our beautiful journey begins.
             </div>
             <div class="status-message" id="decline-msg" style="color: var(--text-muted); font-size: 1.2rem;">
-                No worries at all! We'll keep the morning perfectly lazy. See you at the candlelight!
+                No worries at all! See you at the candlelight!
             </div>
         </div>
 
@@ -610,15 +610,6 @@
                 method: 'POST',
                 body: formData
             }).catch(error => console.error("Error", error));
-
-            // 2. Automated WhatsApp Redirect
-            const phoneNumber = "6285800049448"; 
-            const message = "I think I'll pass on the morning trip this time, let's just enjoy a lazy morning! 🤍";
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            
-            setTimeout(() => {
-                window.open(whatsappUrl, '_blank');
-            }, 1000);
         }
 
         function hideAllButtons() {
