@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Beloved Angel</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap');
+
+        :root {
+            /* Cheerful Pastel Theme */
+            --bg-color: #fff9f5;         
+            --bg-overlay: #ffffff;       
+            --text-main: #5c4b51;        
+            --text-muted: #9e8e93;       
+            --accent: #ff8b94;           
+            --accent-hover: #ff707c;     
+            --accent-secondary: #f8b195; 
+            --btn-glow: rgba(255, 139, 148, 0.4);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Noticeable Corner Overlays --- */
+        .corner-decor {
+            position: fixed;
+            z-index: 0;
+            pointer-events: none; 
+            opacity: 0.8;
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .corner-top-left {
+            top: -100px;
+            left: -100px;
+            width: 350px;
+            height: 350px;
+            background-color: rgba(255, 139, 148, 0.25); 
+        }
+
+        .corner-bottom-right {
+            bottom: -100px;
+            right: -100px;
+            width: 450px;
+            height: 450px;
+            background-color: rgba(248, 177, 149, 0.25); 
+        }
+
+        /* --- Randomly Placed Floating Icons --- */
+        .floating-icon {
+            position: fixed;
+            z-index: 0;
+            pointer-events: none;
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.6;
+        }
+
+        .icon-1 { top: 15%; left: 8%; width: 45px; height: 45px; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmY4Yjk0IiBkPSJNMTIgM3YxMC41NWMtLjU5LS4zNC0xLjI3LS41NS0yLS41NWMtMi4yMSAwLTQgMS43OS00IDRzMS43OSA0IDQgNCA0LTEuNzkgNC00VjdKdjNsMiAydjhoM3YtMThoLTN6Ii8+PC9zdmc+'); animation: floatSlowA 6s ease-in-out infinite alternate; }
+        .icon-2 { top: 25%; right: 10%; width: 35px; height: 35px; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZjhiMTk1IiBkPSJNMTIgMmwyLjQgNy4yaDcuNmwtNi4yIDQuOCAyLjQgNy4yLTUuOC00LjgtNS44IDQuOCAyLjQtNy4yLTYuMi00LjhoNy42eiIvPjwvc3ZnPg=='); animation: floatSlowB 8s ease-in-out infinite alternate; }
+        .icon-3 { bottom: 20%; left: 5%; width: 50px; height: 50px; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZjhiMTk1IiBkPSJNMTIgM3YxMC41NWMtLjU5LS4zNC0xLjI3LS41NS0yLS41NWMtMi4yMSAwLTQgMS43OS00IDRzMS43OSA0IDQgNCA0LTEuNzkgNC00VjdKdjNsMiAydjhoM3YtMThoLTN6Ii8+PC9zdmc+'); animation: floatSlowA 7s ease-in-out infinite alternate-reverse; }
+        .icon-4 { top: 60%; right: 5%; width: 40px; height: 40px; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmY4Yjk0IiBkPSJNMTIgMmwyLjQgNy4yaDcuNmwtNi4yIDQuOCAyLjQgNy4yLTUuOC00LjgtNS44IDQuOCAyLjQtNy4yLTYuMi00LjhoNy42eiIvPjwvc3ZnPg=='); animation: floatSlowB 9s ease-in-out infinite alternate-reverse; }
+        .icon-5 { top: 8%; right: 25%; width: 30px; height: 30px; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmY4Yjk0IiBkPSJNMTIgM3YxMC41NWMtLjU5LS4zNC0xLjI3LS41NS0yLS41NWMtMi4yMSAwLTQgMS43OS00IDRzMS43OSA0IDQgNCA0LTEuNzkgNC00VjdKdjNsMiAydjhoM3YtMThoLTN6Ii8+PC9zdmc+'); animation: floatSlowA 5s ease-in-out infinite alternate; }
+        .icon-6 { bottom: 12%; right: 20%; width: 45px; height: 45px; background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZjhiMTk1IiBkPSJNMTIgMmwyLjQgNy4yaDcuNmwtNi4yIDQuOCAyLjQgNy4yLTUuOC00LjgtNS44IDQuOCAyLjQtNy4yLTYuMi00LjhoNy42eiIvPjwvc3ZnPg=='); animation: floatSlowB 7.5s ease-in-out infinite alternate; }
+
+        @keyframes floatSlowA { 0% { transform: translateY(0) rotate(-10deg); } 100% { transform: translateY(-25px) rotate(10deg); } }
+        @keyframes floatSlowB { 0% { transform: translateY(0) rotate(15deg); } 100% { transform: translateY(30px) rotate(-15deg); } }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            margin-bottom: 0.5em;
+        }
+
+        /* --- Intro Screen --- */
+        #intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            transition: opacity 1s ease-in-out, visibility 1s;
+            perspective: 1500px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .ticket-visual {
+            width: 200%;
+            max-width: 800px;
+            aspect-ratio: 13.5 / 4.5; 
+            background: linear-gradient(135deg, #ffbaba, #ffe2c8);
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(255, 139, 148, 0.2);
+            opacity: 0;
+            transform: translateZ(200px) rotateX(20deg) rotateY(-30deg) translateY(-50px);
+            animation: flyIn3D 2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            animation-delay: 0.5s;
+            overflow: hidden;
+        }
+
+        .ticket-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes flyIn3D {
+            0% { opacity: 0; transform: translateZ(300px) rotateX(30deg) rotateY(-40deg) translateY(-100px); }
+            100% { opacity: 1; transform: translateZ(0) rotateX(0) rotateY(0) translateY(0); }
+        }
+
+        /* NEW PREMIUM BUTTONS */
+        .btn-elegant {
+            background-color: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            z-index: 2;
+            position: relative;
+        }
+
+        .btn-elegant:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--btn-glow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: #fff;
+        }
+
+        #claim-btn {
+            opacity: 0;
+            animation: fadeIn 1.2s 2.2s forwards;
+        }
+
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        /* --- Main Content --- */
+        #main-content {
+            display: none;
+            opacity: 0;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 0 25px;
+            padding-bottom: 10vh;
+            position: relative;
+            z-index: 10;
+        }
+
+        .content-section {
+            padding: 15vh 0; 
+            min-height: 70vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            visibility: hidden;
+        }
+
+        .content-section.revealed {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+
+        .content-section h2 {
+            color: var(--accent);
+            font-size: 2.2rem;
+            margin-top: 0;
+        }
+
+        .time-badge {
+            background-color: #fff;
+            color: var(--accent);
+            padding: 8px 22px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(255, 139, 148, 0.15);
+        }
+
+        /* --- Elegant Split-View Gallery (Rounded Rectangles) --- */
+        .elegant-gallery {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            height: 250px;
+            margin: 25px 0;
+        }
+
+        .elegant-item {
+            flex: 1; 
+            border-radius: 16px;
+            background-color: var(--bg-overlay);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .elegant-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .elegant-item:hover img {
+            transform: scale(1.08); 
+        }
+
+        .map-container {
+            margin-top: 25px;
+            border-radius: 16px;
+            overflow: hidden;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            background-color: #fff;
+        }
+
+        /* --- UPDATED DINNER SECTION (Frosted Glass over Blurred Photo) --- */
+        .mystery-dinner {
+            width: 100%;
+            height: 250px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 4px solid var(--bg-overlay);
+        }
+        
+        .mystery-dinner::before {
+            content: '';
+            position: absolute;
+            top: -10px; left: -10px; right: -10px; bottom: -10px; 
+            background-image: url('dinner.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(8px) brightness(0.7); /* Blurred romantic background */
+            z-index: 0;
+        }
+
+        .mystery-content {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 20px 50px;
+            border-radius: 30px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .mystery-content span {
+            font-size: 5rem;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #hidden-journey {
+            display: none; 
+        }
+
+        .status-message {
+            display: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-top: 30px;
+            animation: fadeIn 1s forwards;
+        }
+
+        /* --- Mobile Accessibility Fixes --- */
+        @media (max-width: 768px) {
+            .elegant-gallery {
+                flex-direction: column; 
+                height: auto;
+            }
+            .elegant-item {
+                height: 200px;
+                width: 100%;
+            }
+            .content-section {
+                padding: 10vh 0; 
+            }
+            .content-section h2 {
+                font-size: 1.8rem;
+            }
+            .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn-elegant {
+                width: 100%; 
+            }
+            .ticket-visual {
+                aspect-ratio: 2.2 / 1; 
+            }
+            .icon-5, .icon-6 { display: none; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Corner Overlays -->
+    <div class="corner-decor corner-top-left"></div>
+    <div class="corner-decor corner-bottom-right"></div>
+
+    <!-- Randomly Placed Floating Icons -->
+    <div class="floating-icon icon-1"></div>
+    <div class="floating-icon icon-2"></div>
+    <div class="floating-icon icon-3"></div>
+    <div class="floating-icon icon-4"></div>
+    <div class="floating-icon icon-5"></div>
+    <div class="floating-icon icon-6"></div>
+
+    <!-- Intro Screen with Fly-in Ticket -->
+    <div id="intro-screen">
+        <div class="ticket-visual">
+            <img src="ticket.jpg" alt="Ticket">
+        </div>
+        <button id="claim-btn" class="btn-elegant" onclick="claimTicket()">Claim Ticket</button>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        
+        <!-- Section 1: Candlelight -->
+        <div class="content-section fade-trigger" id="section-1">
+            <div class="time-badge">12 Sept 2026 • 18:00 WIB</div>
+            <h2>Candlelight: Four Season by Vivaldi</h2>
+            <p>A beautiful evening surrounded by hundreds of candles at <br><strong>Grha Budaya Embung Giwangan</strong>.</p>
+            
+            <div class="elegant-gallery">
+                <div class="elegant-item">
+                    <img src="candlelight1.jpg" alt="Candlelight1">
+                </div>
+                <div class="elegant-item">
+                    <img src="candlelight2.jpg" alt="Candlelight2">
+                </div>
+            </div>
+
+            <div class="map-container">
+                <!-- Red pinpoint exact embed -->
+                <iframe src="https://maps.google.com/maps?q=Grha+Budaya+Embung+Giwangan,+Yogyakarta&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <!-- Section 2: Dinner -->
+        <div class="content-section fade-trigger" id="section-2">
+            <div class="time-badge">12 Sept 2026 • 20:00 WIB</div>
+            <h2>Dinner Plan</h2>
+            <p> The location is a little secret for now. Hehehe</p>
+            
+            <div class="mystery-dinner">
+                <div class="mystery-content">
+                    <span>?</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: The Ask (REMOVED LET'S GO BUTTON) -->
+        <div class="content-section fade-trigger" id="section-3">
+            <h2>One More Thing...</h2>
+            <p>I have one more surprise up my sleeve. Are you up for a little nature getaway the next morning to wrap up our trip?</p>
+            
+            <div class="btn-group" id="decision-area-1">
+                <!-- Only the 'See further' button remains -->
+                <button class="btn-elegant btn-outline" id="explore-btn" onclick="revealJourney()">Lets see!</button>
+            </div>
+            
+            <div class="status-message" id="success-msg">
+                How wonderful! I'll be counting the moments until our beautiful journey begins.
+            </div>
+            <div class="status-message" id="decline-msg" style="color: var(--text-muted); font-size: 1.2rem;">
+                No worries at all! We'll keep the morning perfectly lazy. See you at the candlelight!
+            </div>
+        </div>
+
+        <!-- Section 4: Hidden Journey -->
+        <div id="hidden-journey" class="content-section fade-trigger">
+            <div class="time-badge">13 Sept 2026 • ETA Solo 13:00 WIB</div>
+            <h2>Kali Talang Escapade</h2>
+            <p>A fresh morning surrounded by nature's finest at Kali Talang, before we head towards Solo by afternoon.</p>
+            
+            <div class="elegant-gallery">
+                <div class="elegant-item">
+                    <!-- Scraped Google Maps Photo 1 -->
+                    <img src="kalitalang1.jpg" alt="Kalitalang1">
+                </div>
+                <div class="elegant-item">
+                    <!-- Scraped Google Maps Photo 2 -->
+                    <img src="kalitalang2.jpg" alt="Kalitalang2">
+                </div>
+            </div>
+
+            <div class="btn-group" id="decision-area-2" style="margin-top: 20px;">
+                <button class="btn-elegant" onclick="acceptAdventure(event)">Let's go!</button>
+                <button class="btn-elegant btn-outline" onclick="declineAdventure(event)">Maybe next time</button>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        // REPLACE THIS WITH YOUR ACTUAL WEB3FORMS ACCESS KEY
+        const WEB3FORMS_ACCESS_KEY = "c22e7aa2-5a21-4e84-ab6e-6476bf4364a3";
+
+        function claimTicket() {
+            const intro = document.getElementById('intro-screen');
+            const main = document.getElementById('main-content');
+            
+            intro.style.opacity = '0';
+            setTimeout(() => {
+                intro.style.display = 'none';
+                main.style.display = 'block';
+                
+                setTimeout(() => {
+                    main.style.opacity = '1';
+                    document.getElementById('section-1').classList.add('revealed');
+                    initSequentialObserver();
+                }, 50);
+            }, 1000);
+        }
+
+        function revealJourney() {
+            const journey = document.getElementById('hidden-journey');
+            const exploreBtn = document.getElementById('explore-btn');
+            
+            exploreBtn.style.display = 'none'; 
+            journey.style.display = 'flex'; 
+            
+            setTimeout(() => {
+                journey.classList.add('revealed');
+                journey.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        function acceptAdventure(event) {
+            hideAllButtons();
+            
+            const successMsg = document.getElementById('success-msg');
+            successMsg.style.display = 'block';
+            event.target.closest('.content-section').appendChild(successMsg);
+
+            const formData = new FormData();
+            formData.append('access_key', WEB3FORMS_ACCESS_KEY);
+            formData.append('subject', 'She said YES to the Adventure!');
+            formData.append('message', "Fita clicked 'Let's go!' for the nature getaway to Kali Talang.");
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            }).then(response => console.log("Accept email sent.")).catch(error => console.error("Error", error));
+        }
+
+        function declineAdventure(event) {
+            hideAllButtons();
+            
+            const declineMsg = document.getElementById('decline-msg');
+            declineMsg.style.display = 'block';
+            event.target.closest('.content-section').appendChild(declineMsg);
+
+            const formData = new FormData();
+            formData.append('access_key', WEB3FORMS_ACCESS_KEY);
+            formData.append('subject', 'Adventure Update');
+            formData.append('message', "Fita chose 'Maybe next time' for the morning trip. Lazy morning it is!");
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            }).then(response => console.log("Decline email sent.")).catch(error => console.error("Error", error));
+        }
+
+        function hideAllButtons() {
+            const area1 = document.getElementById('decision-area-1');
+            const area2 = document.getElementById('decision-area-2');
+            if (area1) area1.style.display = 'none';
+            if (area2) area2.style.display = 'none';
+        }
+
+        function initSequentialObserver() {
+            const triggers = document.querySelectorAll('.fade-trigger');
+            let nextIndexToReveal = 1;
+
+            const observerOptions = {
+                root: null, 
+                rootMargin: '-10% 0px -20% 0px', 
+                threshold: 0 
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        
+                        if (target === triggers[nextIndexToReveal]) {
+                            target.classList.add('revealed');
+                            observer.unobserve(target);
+                            nextIndexToReveal++;
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            for (let i = nextIndexToReveal; i < triggers.length; i++) {
+                if (triggers[i].id === 'hidden-journey') continue;
+                observer.observe(triggers[i]);
+            }
+        }
+    </script>
+</body>
+</html>
