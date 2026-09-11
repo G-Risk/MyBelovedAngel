@@ -592,16 +592,6 @@
                 method: 'POST',
                 body: formData
             }).catch(error => console.error("Error", error));
-
-            // 2. Automated WhatsApp Redirect
-            // Use country code (62 for Indonesia), no +, no spaces
-            const phoneNumber = "6285800049448"; 
-            const message = "Yay! I'd love to go to Kali Talang with you! ✨ Let's go!";
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            
-            setTimeout(() => {
-                window.open(whatsappUrl, '_blank');
-            }, 1000);
         }
 
         function declineAdventure(event) {
